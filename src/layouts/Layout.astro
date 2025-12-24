@@ -1,50 +1,155 @@
 ---
 interface Props {
-	title: string;
+  title?: string;
 }
 
-const { title } = Astro.props;
+const { title = "Portfolio - Creative Developer" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-[#2A2F36] text-white">
+    <div class="cursor" id="cursor"></div>
+    <slot />
+  </body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --accent: 0, 255, 229;
+    --accent-light: 26, 105, 244;
+    --accent-dark: 11, 45, 146;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      rgb(var(--accent-dark)) 60%
+    );
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+  }
+
+  html {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    background: #2A2F36;
+    scroll-behavior: smooth;
+  }
+
+  .cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00FFE5;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    transition: all 0.3s ease;
+    transition-property: background, transform;
+    transform-origin: center;
+    backdrop-filter: invert(1);
+    background: transparent;
+  }
+
+  .cursor-grow {
+    transform: scale(2);
+    background: rgba(0, 255, 229, 0.1);
+    border-color: #1A69F4;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+
+  .reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  ::selection {
+    background: rgba(0, 255, 229, 0.3);
+    color: white;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #2A2F36;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #00FFE5, #1A69F4);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #1A69F4, #00FFE5);
+  }
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Custom cursor
+  const cursor = document.querySelector('.cursor') as HTMLElement | null;
+  document.addEventListener('mousemove', (e) => {
+    if (cursor) {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    }
+  });
+
+  document.addEventListener('mousedown', () => {
+    if (cursor) {
+      cursor.classList.add('cursor-grow');
+    }
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (cursor) {
+      cursor.classList.remove('cursor-grow');
+    }
+  });
+
+  // Reveal animations
+  window.addEventListener('scroll', reveal);
+
+  function reveal() {
+    const reveals = document.querySelectorAll('.reveal');
+
+    reveals.forEach((reveal) => {
+      const windowHeight = window.innerHeight;
+      const revealTop = reveal.getBoundingClientRect().top;
+      const revealPoint = 150;
+
+      if(revealTop < windowHeight - revealPoint) {
+        reveal.classList.add('active');
+      }
+    });
+  }
+</script>

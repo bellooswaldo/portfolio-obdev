@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.svg';
+---
+
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#2A2F36]">
+  <div class="container mx-auto px-4 z-10">
+    <div class="flex flex-col items-center mb-12 reveal">
+      <div class="w-96 h-96 mb-8 flex items-center justify-center">
+        <Image 
+          src={logo} 
+          alt="Logo" 
+          class="w-full h-full object-contain"
+        />
+      </div>
+    </div>
+
+    <h1 class="text-6xl md:text-8xl font-bold mb-6 text-center reveal">
+      Creative
+      <span class="bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text">
+        Developer
+      </span>
+    </h1>
+    
+    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto text-center reveal">
+      Transformando ideas en experiencias digitales únicas y memorables.
+      Especializado en desarrollo web creativo y diseño de interacción.
+    </p>
+    
+    <div class="mt-12 flex justify-center reveal">
+      <a 
+        href="#projects" 
+        class="px-8 py-4 bg-gradient-to-r from-primary-cyan to-primary-blue rounded-full text-white hover:opacity-90 transition-opacity"
+      >
+        Ver Proyectos
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-primary-cyan">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>
