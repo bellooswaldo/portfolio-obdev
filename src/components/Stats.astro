@@ -1,0 +1,25 @@
+---
+const stats = [
+  { label: "Estudiantes Asesorados", value: "+50", icon: "users" },
+  { label: "Horas de Formación", value: "100+", icon: "clock" },
+  { label: "Proyectos Guiados", value: "20+", icon: "code" },
+  { label: "Cursos Dictados", value: "+5", icon: "book" }
+];
+---
+
+<section class="pb-20 bg-transparent">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {stats.map((stat) => (
+        <div class="reveal p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-primary-cyan/30 transition-all duration-300 text-center group">
+          <div class="text-4xl font-bold bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text mb-2 group-hover:scale-110 transition-transform">
+            {stat.value}
+          </div>
+          <div class="text-gray-400 text-sm font-medium uppercase tracking-wider">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

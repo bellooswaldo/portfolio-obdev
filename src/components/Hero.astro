@@ -3,9 +3,9 @@ import { Image } from 'astro:assets';
 import logo from '../assets/logo.svg';
 ---
 
-<section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#2A2F36]">
+<section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent">
   <div class="container mx-auto px-4 z-10">
-    <div class="flex flex-col items-center mb-12 reveal">
+    <div class="flex flex-col items-center mb-12">
       <div class="w-96 h-96 mb-8 flex items-center justify-center">
         <Image 
           src={logo} 
@@ -27,12 +27,19 @@ import logo from '../assets/logo.svg';
       Especializado en desarrollo web creativo y diseño de interacción.
     </p>
     
-    <div class="mt-12 flex justify-center reveal">
+    <div class="mt-12 flex flex-col md:flex-row justify-center gap-4 reveal">
       <a 
         href="#projects" 
-        class="px-8 py-4 bg-gradient-to-r from-primary-cyan to-primary-blue rounded-full text-white hover:opacity-90 transition-opacity"
+        class="px-8 py-4 bg-gradient-to-r from-primary-cyan to-primary-blue rounded-full text-white font-bold hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all duration-300"
       >
-        Ver Proyectos
+        Ver Impacto
+      </a>
+      <a 
+        href="/cv.pdf" 
+        target="_blank"
+        class="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white font-bold hover:bg-white/10 transition-all duration-300"
+      >
+        Descargar CV
       </a>
     </div>
   </div>

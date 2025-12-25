@@ -16,17 +16,23 @@ const { title = "Portfolio - Creative Developer" } = Astro.props;
     <title>{title}</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#2A2F36] text-white">
-    <div class="cursor" id="cursor"></div>
+  <body class="bg-[#2A2F36] text-white selection:bg-primary-cyan/30 selection:text-white">
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-cyan/10 rounded-full blur-[120px] animate-pulse"></div>
+      <div class="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] bg-primary-blue/10 rounded-full blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+      <div id="bg-glow" class="absolute top-0 left-0 w-[400px] h-[400px] bg-primary-blue/5 rounded-full blur-[100px] pointer-events-none transition-transform duration-700 ease-out"></div>
+    </div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --accent: 0, 255, 229;
-    --accent-light: 26, 105, 244;
-    --accent-dark: 11, 45, 146;
+    --accent: 0, 212, 255;
+    --accent-light: 0, 114, 255;
+    --accent-dark: 0, 51, 255;
     --accent-gradient: linear-gradient(
       45deg,
       rgb(var(--accent)),
@@ -48,25 +54,38 @@ const { title = "Portfolio - Creative Developer" } = Astro.props;
     scroll-behavior: smooth;
   }
 
-  .cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #00FFE5;
-    border-radius: 50%;
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #00D4FF; /* Azul Celeste puro */
     position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 1000;
     pointer-events: none;
-    z-index: 999;
-    transition: all 0.3s ease;
-    transition-property: background, transform;
-    transform-origin: center;
-    backdrop-filter: invert(1);
-    background: transparent;
+    transition: transform 0.1s ease-out;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
   }
 
-  .cursor-grow {
-    transform: scale(2);
-    background: rgba(0, 255, 229, 0.1);
-    border-color: #1A69F4;
+  .cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 999;
+    pointer-events: none;
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+  }
+
+  .cursor-hover .cursor-outline {
+    transform: scale(1.5);
+    background-color: rgba(0, 212, 255, 0.1);
+    border-color: #00D4FF;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
   }
 
   body {
@@ -75,9 +94,7 @@ const { title = "Portfolio - Creative Developer" } = Astro.props;
 
   .reveal {
     position: relative;
-    transform: translateY(150px);
-    opacity: 0;
-    transition: 1s all ease;
+    /* opacity handled by GSAP */
   }
 
   .reveal.active {
@@ -100,12 +117,12 @@ const { title = "Portfolio - Creative Developer" } = Astro.props;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #00FFE5, #1A69F4);
+    background: linear-gradient(to bottom, #00D4FF, #0072FF);
     border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #1A69F4, #00FFE5);
+    background: linear-gradient(to bottom, #0072FF, #00D4FF);
   }
 </style>
 
@@ -116,40 +133,68 @@ const { title = "Portfolio - Creative Developer" } = Astro.props;
   gsap.registerPlugin(ScrollTrigger);
 
   // Custom cursor
-  const cursor = document.querySelector('.cursor') as HTMLElement | null;
-  document.addEventListener('mousemove', (e) => {
-    if (cursor) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+  const cursorDot = document.querySelector('.cursor-dot') as HTMLElement | null;
+  const cursorOutline = document.querySelector('.cursor-outline') as HTMLElement | null;
+  const bgGlow = document.querySelector('#bg-glow') as HTMLElement | null;
+
+  window.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e;
+    
+    if (cursorDot) {
+      gsap.to(cursorDot, {
+        x: clientX,
+        y: clientY,
+        duration: 0.1
+      });
+    }
+
+    if (cursorOutline) {
+      gsap.to(cursorOutline, {
+        x: clientX - 15,
+        y: clientY - 15,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    }
+
+    if (bgGlow) {
+      gsap.to(bgGlow, {
+        x: clientX - 200,
+        y: clientY - 200,
+        duration: 2,
+        ease: "power1.out"
+      });
     }
   });
 
-  document.addEventListener('mousedown', () => {
-    if (cursor) {
-      cursor.classList.add('cursor-grow');
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (cursor) {
-      cursor.classList.remove('cursor-grow');
-    }
-  });
-
-  // Reveal animations
-  window.addEventListener('scroll', reveal);
-
-  function reveal() {
-    const reveals = document.querySelectorAll('.reveal');
-
-    reveals.forEach((reveal) => {
-      const windowHeight = window.innerHeight;
-      const revealTop = reveal.getBoundingClientRect().top;
-      const revealPoint = 150;
-
-      if(revealTop < windowHeight - revealPoint) {
-        reveal.classList.add('active');
-      }
+  // Cursor hover effects
+  const interactiveElements = document.querySelectorAll('a, button, input, textarea, .group');
+  interactiveElements.forEach((el) => {
+    el.addEventListener('mouseenter', () => {
+      document.body.classList.add('cursor-hover');
     });
-  }
+    el.addEventListener('mouseleave', () => {
+      document.body.classList.remove('cursor-hover');
+    });
+  });
+
+  // Reveal animations with GSAP
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach((el) => {
+    // Initial state
+    gsap.set(el, { opacity: 0, y: 30 });
+    
+    gsap.to(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: "top 95%", // Empezar un poco antes para asegurar visibilidad
+        toggleActions: "play none none none"
+      },
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "power3.out",
+      clearProps: "transform" // Limpia transform después para evitar conflictos con CSS
+    });
+  });
 </script>

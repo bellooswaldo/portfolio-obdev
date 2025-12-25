@@ -1,46 +1,67 @@
 ---
 const projects = [
   {
-    title: "E-commerce Platform",
-    description: "Plataforma de comercio electrónico moderna con React y Node.js",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
-    tags: ["React", "Node.js", "MongoDB"]
+    category: "Formación",
+    title: "Master en Desarrollo Web Moderno",
+    description: "Instructor principal de curso intensivo cubriendo el stack completo desde lógica hasta deployment.",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1000",
+    tags: ["React", "Astro", "Node.js"],
+    impact: "+20 Estudiantes"
   },
   {
-    title: "Portfolio Artist",
-    description: "Portfolio para artista visual con animaciones avanzadas",
-    image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&q=80&w=1000",
-    tags: ["Vue.js", "GSAP", "Tailwind"]
+    category: "Asesoría Técnica",
+    title: "Arquitectura Tesis Ingeniería",
+    description: "Mentoría especializada en diseño de sistemas y optimización de base de datos para proyecto de grado.",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000",
+    tags: ["SQL", "Arquitectura", "Backend"],
+    impact: "Tesis Aprobada"
   },
   {
-    title: "Social Media Dashboard",
-    description: "Dashboard para análisis de redes sociales",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
-    tags: ["React", "D3.js", "Firebase"]
+    category: "Workshop",
+    title: "Interactividad con GSAP",
+    description: "Taller práctico enfocado en animaciones web de alto rendimiento y experiencia de usuario.",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1000",
+    tags: ["GSAP", "UI/UX", "JS"],
+    impact: "15 Profesionales"
   }
 ];
 ---
 
 <section id="projects" class="py-20">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-16 reveal">Proyectos</h2>
+    <div class="flex justify-between items-end mb-16">
+      <h2 class="text-4xl font-bold reveal">Impacto y Formación</h2>
+    </div>
     
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project) => (
-        <div class="group relative overflow-hidden rounded-lg reveal">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
-          <img 
-            src={project.image}
-            alt={project.title}
-            class="w-full h-[300px] object-cover transform group-hover:scale-110 transition-transform duration-500"
-          />
-          <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
-            <h3 class="text-2xl font-bold mb-2">{project.title}</h3>
-            <p class="text-gray-300 mb-4">{project.description}</p>
-            <div class="flex gap-2">
-              {project.tags.map((tag) => (
-                <span class="px-3 py-1 bg-primary-blue/30 rounded-full text-sm border border-primary-cyan/20">{tag}</span>
-              ))}
+        <div class="group relative overflow-hidden rounded-2xl reveal bg-white/5 backdrop-blur-sm border border-white/10 hover:border-primary-cyan/50 transition-all duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#2A2F36] via-[#2A2F36]/20 to-transparent z-10 opacity-90"></div>
+          
+          <div class="h-[220px] overflow-hidden">
+            <img 
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-60"
+            />
+            <div class="absolute top-4 left-4 z-20">
+              <span class="px-3 py-1 bg-primary-blue/80 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-white border border-white/20">
+                {project.category}
+              </span>
+            </div>
+          </div>
+
+          <div class="p-6 relative z-20 -mt-12">
+            <h3 class="text-2xl font-bold mb-2 group-hover:text-primary-cyan transition-colors line-clamp-1">{project.title}</h3>
+            <p class="text-gray-400 text-sm mb-6 line-clamp-2">{project.description}</p>
+            
+            <div class="flex items-center justify-between mt-auto">
+              <div class="flex gap-2">
+                {project.tags.slice(0, 2).map((tag) => (
+                  <span class="text-[11px] font-medium text-primary-cyan opacity-80">#{tag}</span>
+                ))}
+              </div>
+              <span class="text-xs font-bold text-white/50">{project.impact}</span>
             </div>
           </div>
         </div>
