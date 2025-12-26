@@ -1,48 +1,38 @@
-# Astro Starter Kit: Basics
+# Portafolio - Oswaldo Bello (OB Dev)
 
-```sh
-npm create astro@latest -- --template basics
-```
+¡Bienvenido a mi portafolio personal! Soy **Oswaldo Bello**, Programador & Mentor Técnico Especialista en C++. Este proyecto está diseñado con una estética moderna, minimalista y segura, utilizando **Astro 5** para un rendimiento excepcional.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🚀 Tecnologías Utilizadas
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+*   **[Astro](https://astro.build/)**: Framework web para la construcción de sitios rápidos orientados a contenido.
+*   **[Tailwind CSS](https://tailwindcss.com/)**: Para un diseño responsivo y estilizado.
+*   **[GSAP](https://greensock.com/gsap/)**: Animaciones fluidas y efectos de cursor personalizados.
+*   **[EmailJS](https://www.emailjs.com/)**: Integración de formulario de contacto segura sin backend.
+*   **GitHub Actions**: Despliegue automático a GitHub Pages.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🛡️ Características de Seguridad
 
-## 🚀 Project Structure
+Este portafolio incluye medidas proactivas contra la ingeniería social y el spam:
+*   **Ofuscación de Datos:** Los datos sensibles (email y teléfono) están codificados en Base64 en el código fuente para evitar el rastreo automático por parte de bots.
+*   **Interfaz Segura:** Se utilizan etiquetas genéricas en la UI para proteger la privacidad visual del desarrollador.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Comandos Locales
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Si deseas ejecutar este proyecto localmente:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+1.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+2.  **Iniciar servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+3.  **Construir para producción:**
+    ```bash
+    npm run build
+    ```
 
-## 🧞 Commands
+## 📬 Contacto
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Puedes ver el portafolio en vivo en: [https://bellooswaldo.github.io/portfolio-obdev/](https://bellooswaldo.github.io/portfolio-obdev/)
