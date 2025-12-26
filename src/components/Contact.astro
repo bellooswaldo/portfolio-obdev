@@ -130,10 +130,13 @@
       statusEl.textContent = 'Procesando...';
 
       try {
-        // REEMPLAZA ESTOS TRES VALORES CON LOS DE TU DASHBOARD DE EMAILJS
-        const SERVICE_ID = 'service_3h96qgf';
-        const TEMPLATE_ID = 'template_1exmm9t';
-        const PUBLIC_KEY = 'JbwZNqcVYSMsrNHuF';
+        const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+        const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+        const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+
+        if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+          throw new Error('Faltan las claves de configuración de EmailJS');
+        }
 
         await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form, PUBLIC_KEY);
 
