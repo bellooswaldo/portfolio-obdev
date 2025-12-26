@@ -1,28 +1,28 @@
 ---
 const projects = [
   {
-    category: "Formación",
-    title: "Master en Desarrollo Web Moderno",
-    description: "Instructor principal de curso intensivo cubriendo el stack completo desde lógica hasta deployment.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1000",
-    tags: ["React", "Astro", "Node.js"],
-    impact: "+20 Estudiantes"
+    category: "Software Empresarial",
+    title: "ERP Académico Integral",
+    description: "Sistema de gestión de recursos empresariales desarrollado como modelo educativo. Incluye módulos de inventario, facturación y control de usuarios.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+    tags: ["C#", "PostgreSQL", "MySQL"],
+    impact: "Proyecto Modelo"
   },
   {
-    category: "Asesoría Técnica",
-    title: "Arquitectura Tesis Ingeniería",
-    description: "Mentoría especializada en diseño de sistemas y optimización de base de datos para proyecto de grado.",
+    category: "Mentoría Técnica",
+    title: "Laboratorio de C# y .NET",
+    description: "Repositorio de patrones de diseño y mejores prácticas utilizado para la formación de estudiantes universitarios y profesionales.",
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000",
-    tags: ["SQL", "Arquitectura", "Backend"],
-    impact: "Tesis Aprobada"
+    tags: ["C#", "POO", "Arch"],
+    impact: "+50 Estudiantes"
   },
   {
-    category: "Workshop",
-    title: "Interactividad con GSAP",
-    description: "Taller práctico enfocado en animaciones web de alto rendimiento y experiencia de usuario.",
+    category: "Educación Tecnológica",
+    title: "Formación en Robótica",
+    description: "Diseño e implementación de programas educativos técnicos integrando lógica de programación y hardware.",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1000",
-    tags: ["GSAP", "UI/UX", "JS"],
-    impact: "15 Profesionales"
+    tags: ["Lógica", "Hardware", "Python"],
+    impact: "8 Instituciones"
   }
 ];
 ---
@@ -57,7 +57,7 @@ const projects = [
             
             <div class="flex items-center justify-between mt-auto">
               <div class="flex gap-2">
-                {project.tags.slice(0, 2).map((tag) => (
+                {project.tags.slice(0, 3).map((tag) => (
                   <span class="text-[11px] font-medium text-primary-cyan opacity-80">#{tag}</span>
                 ))}
               </div>
