@@ -1,42 +1,81 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.svg';
+import avatar from '../assets/avatar.jpg';
 ---
 
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent">
   <div class="container mx-auto px-4 z-10">
     <div class="flex flex-col items-center mb-12">
-      <div class="w-96 h-96 mb-8 flex items-center justify-center">
-        <Image 
-          src={logo} 
-          alt="Logo" 
-          class="w-full h-full object-contain"
-        />
+      <!-- Contenedor 3D -->
+      <div class="relative w-72 h-72 [perspective:1000px] group">
+        <!-- Contenedor Foto (Círculo Frontal) -->
+        <div id="hero-photo" class="absolute inset-0 w-full h-full rounded-full overflow-hidden bg-[#2A2F36] shadow-[0_0_60px_rgba(0,212,255,0.25)] flex items-center justify-center [backface-visibility:hidden]">
+          <div class="relative w-full h-full flex items-center justify-center">
+            <Image 
+              src={avatar} 
+              alt="Oswaldo Bello" 
+              class="w-full h-full object-cover rounded-full opacity-60 filter grayscale brightness-[0.9] contrast-[1.2] scale-[0.8]"
+            />
+            
+            <!-- Anillo Neón Interno -->
+            <div class="absolute inset-0 rounded-full border-2 border-primary-cyan/30 shadow-[inset_0_0_30px_rgba(0,212,255,0.4)] pointer-events-none"></div>
+
+            <!-- Ojos Eléctricos con efecto de pulso (encoger/agrandar) -->
+            <div class="absolute top-[41%] left-[38%] w-3 h-3 bg-primary-cyan rounded-full shadow-[0_0_15px_#00d4ff,0_0_25px_#00d4ff] z-20 -translate-x-1/2 -translate-y-1/2 animate-eye-pulse"></div>
+            <div class="absolute top-[41%] left-[61%] w-3 h-3 bg-primary-cyan rounded-full shadow-[0_0_15px_#00d4ff,0_0_25px_#00d4ff] z-20 -translate-x-1/2 -translate-y-1/2 animate-eye-pulse"></div>
+            
+            <!-- Punto Objetivo Giratorio -->
+            <div class="absolute inset-0 animate-spin-slow">
+               <div id="target-point" class="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary-cyan rounded-full shadow-[0_0_20px_#00d4ff] cursor-crosshair z-30 transition-transform hover:scale-150"></div>
+            </div>
+
+            <!-- Contenedor para Disparos Láser Dinámicos -->
+            <svg id="laser-shots" class="absolute inset-0 w-full h-full opacity-0 pointer-events-none z-10" viewBox="0 0 100 100">
+              <line id="shot-left" x1="38" y1="41" x2="50" y2="92" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" />
+              <line id="shot-right" x1="61" y1="41" x2="50" y2="92" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Contenedor Logo (Círculo Posterior) -->
+        <div id="hero-logo" class="absolute inset-0 w-full h-full rounded-full bg-transparent flex items-center justify-center opacity-0 shadow-[0_0_60px_rgba(0,212,255,0.15)] [backface-visibility:hidden] overflow-hidden">
+          <Image 
+            src={logo} 
+            alt="Logo" 
+            class="w-full h-full object-contain scale-[0.9]"
+          />
+        </div>
       </div>
     </div>
 
-    <h1 class="text-6xl md:text-8xl font-bold mb-6 text-center reveal">
+    <div id="slogan-container" class="h-10 mb-6 flex items-center justify-center reveal">
+      <p id="slogan-text" class="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text tracking-tight h-full flex items-center"></p>
+      <span id="cursor" class="w-[3px] h-8 bg-primary-cyan ml-1 animate-pulse"></span>
+    </div>
+
+    <h1 class="text-6xl md:text-8xl font-bold mb-8 text-center reveal">
       Oswaldo
       <span class="bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text">
         Bello
       </span>
     </h1>
     
-    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto text-center reveal">
+    <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto text-center reveal leading-relaxed">
       Programador & Mentor Técnico. Especialista en C#, Python y formación de nuevos talentos tecnológicos.
     </p>
     
-    <div class="mt-12 flex flex-col md:flex-row justify-center gap-4 reveal">
+    <div class="mt-20 flex flex-col md:flex-row justify-center gap-6 reveal">
       <a 
         href="#projects" 
-        class="px-8 py-4 bg-gradient-to-r from-primary-cyan to-primary-blue rounded-full text-white font-bold hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all duration-300"
+        class="px-10 py-4 bg-gradient-to-r from-primary-cyan to-primary-blue rounded-full text-white font-bold hover:shadow-[0_0_25px_rgba(0,212,255,0.5)] transition-all duration-300 text-center"
       >
         Ver Impacto
       </a>
       <a 
-        href="/cv.pdf" 
+        href=`${import.meta.env.BASE_URL}/cv.pdf`
         target="_blank"
-        class="px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white font-bold hover:bg-white/10 transition-all duration-300"
+        class="px-10 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white font-bold hover:bg-white/10 transition-all duration-300 text-center"
       >
         Descargar CV
       </a>
@@ -49,3 +88,159 @@ import logo from '../assets/logo.svg';
     </svg>
   </div>
 </section>
+
+<style>
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+  }
+  @keyframes eye-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(0.8); }
+  }
+  .animate-eye-pulse {
+    animation: eye-pulse 2s ease-in-out infinite;
+  }
+  @keyframes laser-scan {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+  }
+  .animate-laser-scan {
+    animation: laser-scan 4s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+
+  // --- Lógica de Interacción 3D ---
+  const photo = document.getElementById('hero-photo');
+  const logo = document.getElementById('hero-logo');
+  const cardContainer = photo?.parentElement;
+  const sloganText = document.getElementById('slogan-text');
+  
+  // Elementos del juego
+  const targetPoint = document.getElementById('target-point');
+  const laserShots = document.getElementById('laser-shots');
+  const shotLeft = document.getElementById('shot-left');
+  const shotRight = document.getElementById('shot-right');
+
+  let isLogoVisible = true;
+  let gameWon = false;
+  let gameLoop: number | null = null;
+
+  if (photo && logo && cardContainer) {
+    gsap.set(logo, { rotationY: 0, opacity: 1 });
+    gsap.set(photo, { rotationY: 180, opacity: 0 });
+
+    cardContainer.addEventListener('mouseenter', () => {
+      if (isLogoVisible) {
+        // Revelar Foto (Modo Juego Activo)
+        gsap.to(logo, { rotationY: 180, opacity: 0, scale: 1.1, duration: 0.8, ease: "power2.inOut" });
+        gsap.to(photo, { rotationY: 360, opacity: 1, scale: 1, duration: 0.8, ease: "power2.inOut" });
+        
+        if (!gameWon) {
+          updateInstruction("Toca con el cursor el punto que gira al rededor de la imagen");
+        }
+      } else {
+        // Volver al Logo (Reiniciar Juego)
+        gsap.to(photo, { rotationY: 180, opacity: 0, scale: 1.1, duration: 0.8, ease: "power2.inOut" });
+        gsap.to(logo, { rotationY: 0, opacity: 1, scale: 1, duration: 0.8, ease: "power2.inOut" });
+        
+        // Reset de estado
+        gameWon = false;
+        gsap.to(targetPoint, { scale: 1, opacity: 1, duration: 0.3 });
+        
+        // Restaurar Typewriter
+        setTimeout(() => {
+          if (isLogoVisible) typeWriter(slogans[0]);
+        }, 800);
+      }
+      isLogoVisible = !isLogoVisible;
+    });
+  }
+
+  // Lógica de Disparo Láser
+  if (targetPoint && laserShots && shotLeft && shotRight) {
+    targetPoint.addEventListener('mouseenter', () => {
+      if (isLogoVisible || gameWon) return;
+
+      gameWon = true;
+      
+      // Obtener posición del punto respecto al contenedor SVG (viewBox 100x100)
+      const updateLasers = () => {
+        const rect = targetPoint.getBoundingClientRect();
+        const parentRect = photo!.getBoundingClientRect();
+        
+        // Convertir coordenadas a 0-100 (relativo al SVG)
+        const x = ((rect.left + rect.width/2 - parentRect.left) / parentRect.width) * 100;
+        const y = ((rect.top + rect.height/2 - parentRect.top) / parentRect.height) * 100;
+        
+        shotLeft.setAttribute('x2', x.toString());
+        shotLeft.setAttribute('y2', y.toString());
+        shotRight.setAttribute('x2', x.toString());
+        shotRight.setAttribute('y2', y.toString());
+      };
+
+      // Disparar Láser
+      updateLasers();
+      gsap.to(laserShots, { opacity: 0.8, duration: 0.1, yoyo: true, repeat: 5, onComplete: () => {
+        gsap.set(laserShots, { opacity: 0 });
+      }});
+
+      // Cambiar Slogan Final
+      updateInstruction("¡Felicidades! Bienvenido al mundo de la Programación");
+      
+      // Efecto de celebración en el punto
+      gsap.to(targetPoint, { scale: 3, opacity: 0, duration: 0.5 });
+    });
+  }
+
+  function updateInstruction(text: string) {
+    if (!sloganText) return;
+    gsap.to(sloganText, { opacity: 0, duration: 0.3, onComplete: () => {
+      sloganText.textContent = text;
+      gsap.to(sloganText, { opacity: 1, duration: 0.3 });
+    }});
+  }
+
+  // --- Lógica del Slogan Original (Typewriter) ---
+  const slogans = [
+    "Entusiasta del Código Limpio",
+    "Desarrollador C++ y C#",
+    "Mentor Técnico de Talento",
+    "Formador de Nuevos Programadores",
+    "Arquitecto de Soluciones"
+  ];
+
+  let currentSloganIndex = 0;
+  
+  function typeWriter(text: string, i: number = 0) {
+    if (!sloganText || !isLogoVisible || gameWon) return;
+    if (i <= text.length) {
+      sloganText.textContent = text.substring(0, i);
+      setTimeout(() => typeWriter(text, i + 1), 60);
+    } else {
+      setTimeout(() => eraseEffect(text), 2500);
+    }
+  }
+
+  function eraseEffect(text: string, i?: number) {
+    if (!sloganText || !isLogoVisible || gameWon) return;
+    const charIndex = i ?? text.length;
+    if (charIndex >= 0) {
+      sloganText.textContent = text.substring(0, charIndex);
+      setTimeout(() => eraseEffect(text, charIndex - 1), 40);
+    } else {
+      currentSloganIndex = (currentSloganIndex + 1) % slogans.length;
+      setTimeout(() => typeWriter(slogans[currentSloganIndex]), 800);
+    }
+  }
+
+  window.addEventListener('load', () => {
+    if (sloganText) typeWriter(slogans[0]);
+  });
+</script>

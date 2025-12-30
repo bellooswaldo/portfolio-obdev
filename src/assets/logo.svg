@@ -7,9 +7,7 @@
 	 height="792px" viewBox="0 0 1130.402 792" enable-background="new 0 0 1130.402 792" xml:space="preserve">
 <sodipodi:namedview  id="namedview30" inkscape:pagecheckerboard="0" inkscape:window-maximized="1" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:zoom="0.81726658" inkscape:cx="1327.5962" inkscape:cy="874.25574" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:deskcolor="#d1d1d1" inkscape:window-width="1366" inkscape:window-height="745" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:current-layer="BG_1_">
 	</sodipodi:namedview>
-<g id="BG_1_" transform="translate(3.460825,1.6539949)">
-	<rect id="rect1" x="-3.461" y="-1.654" fill="#2A2F36" width="1130.397" height="792"/>
-</g>
+<!-- Fondo eliminado para transparencia -->
 <g enable-background="new    ">
 	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="820.8652" y1="531.7441" x2="859.1084" y2="531.7441">
 		<stop  offset="0.1854" style="stop-color:#00FFE5"/>
@@ -148,5 +146,6 @@
 	<stop  offset="0.5415" style="stop-color:#1A69F4"/>
 </linearGradient>
 <ellipse opacity="0.6" fill="url(#SVGID_10_)" enable-background="new    " cx="306.707" cy="430.531" rx="101.494" ry="98.24"/>
-<circle fill="#2A2F36" cx="288.167" cy="399" r="64.199"/>
+<!-- Círculo central eliminado -->
+<circle fill="transparent" cx="288.167" cy="399" r="64.199"/>
 </svg>

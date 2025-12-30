@@ -1,6 +1,10 @@
+<p align="center">
+  <img src="./src/assets/logo.svg" alt="OB Dev Logo" width="250" />
+</p>
+
 # Portafolio - Oswaldo Bello (OB Dev)
 
-¡Bienvenido a mi portafolio personal! Soy **Oswaldo Bello**, Programador & Mentor Técnico Especialista en C++. Este proyecto está diseñado con una estética moderna, minimalista y segura, utilizando **Astro 5** para un rendimiento excepcional.
+¡Bienvenido a mi portafolio personal! Soy **Oswaldo Bello**, Desarrollador C++ y C# & Mentor Técnico. Este proyecto está diseñado con una estética moderna, minimalista y segura, utilizando **Astro 5** para un rendimiento excepcional.
 
 ## 🚀 Tecnologías Utilizadas
 
