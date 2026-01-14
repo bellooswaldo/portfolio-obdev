@@ -1,0 +1,55 @@
+<div class="reveal mt-8 group relative max-w-[250px]">
+  <!-- Brillo de fondo para integración -->
+  <div class="absolute -inset-0.5 bg-gradient-to-r from-primary-cyan to-primary-blue rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+  
+  <!-- Contenedor Glassmorphism -->
+  <div class="relative bg-[#2A2F36]/80 backdrop-blur-xl rounded-2xl border border-white/10 p-1 overflow-hidden shadow-2xl">
+    <!-- Aplicamos un filtro para virar el azul de LinkedIn hacia tu Cian -->
+    <div class="linkedin-filter">
+      <div 
+        class="badge-base LI-profile-badge" 
+        data-locale="es_ES" 
+        data-size="medium" 
+        data-theme="dark" 
+        data-type="VERTICAL" 
+        data-vanity="oswaldo-bello" 
+        data-version="v1"
+      >
+        <a class="badge-base__link LI-simple-link" href="https://ve.linkedin.com/in/oswaldo-bello?trk=profile-badge"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
+<style is:global>
+  /* Filtro para virar el azul de LinkedIn (#0077b5) hacia tu Cian (#00D4FF) */
+  .linkedin-filter {
+    filter: hue-rotate(-20deg) brightness(1.2) contrast(0.9);
+  }
+
+  /* EL TRUCO MAESTRO: 
+     Lighten hace que cualquier píxel del iframe más oscuro que el fondo (#2A2F36) 
+     se vuelva del color del fondo. Adiós al negro plano. */
+  .LI-profile-badge {
+    margin: 0 !important;
+    background-color: #2A2F36 !important; /* El color de tu página */
+    mix-blend-mode: lighten !important;
+  }
+
+  /* Aseguramos que el iframe herede el redondeado y quitamos sombras pesadas */
+  .LI-profile-badge iframe {
+    border-radius: 1rem !important;
+    box-shadow: none !important;
+  }
+
+  /* Contenedor principal con efecto de cristal */
+  .badge-container {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+    border-radius: 1rem !important;
+    overflow: hidden !important;
+  }
+</style>

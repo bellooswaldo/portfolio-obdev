@@ -1,10 +1,14 @@
 ---
+import erpImg from '../assets/erp.png';
+import csharpImg from '../assets/csharp.png';
+import roboticsImg from '../assets/robotics.png';
+
 const projects = [
   {
     category: "Software Empresarial",
     title: "ERP Académico Integral",
     description: "Sistema de gestión de recursos empresariales desarrollado como modelo educativo. Incluye módulos de inventario, facturación y control de usuarios.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+    image: erpImg.src,
     tags: ["C#", "PostgreSQL", "MySQL"],
     impact: "Proyecto Modelo"
   },
@@ -12,7 +16,7 @@ const projects = [
     category: "Mentoría Técnica",
     title: "Laboratorio de C# y .NET",
     description: "Repositorio de patrones de diseño y mejores prácticas utilizado para la formación de estudiantes universitarios y profesionales.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000",
+    image: csharpImg.src,
     tags: ["C#", "POO", "Arch"],
     impact: "+50 Estudiantes"
   },
@@ -20,7 +24,7 @@ const projects = [
     category: "Educación Tecnológica",
     title: "Formación en Robótica",
     description: "Diseño e implementación de programas educativos técnicos integrando lógica de programación y hardware.",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1000",
+    image: roboticsImg.src,
     tags: ["Lógica", "Hardware", "Python"],
     impact: "8 Instituciones"
   }
