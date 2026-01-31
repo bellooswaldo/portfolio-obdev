@@ -5,6 +5,7 @@ import roboticsImg from '../assets/robotics.png';
 import seithImg from '../assets/seith.png';
 import reactStudentImg from '../assets/react_student.png';
 
+// Projects
 const projects = [
   {
     category: "Mentoría de Proyectos",
@@ -49,17 +50,20 @@ const projects = [
 ];
 ---
 
+<!-- Projects -->
 <section id="projects" class="py-20">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-end mb-16">
       <h2 class="text-4xl font-bold reveal">Impacto y Formación</h2>
     </div>
     
+    <!-- Projects Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project) => (
         <div class="group relative overflow-hidden rounded-2xl reveal bg-white/5 backdrop-blur-sm border border-white/10 hover:border-primary-cyan/50 transition-all duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-[#2A2F36] via-[#2A2F36]/20 to-transparent z-10 opacity-90"></div>
           
+          <!-- Project Image -->
           <div class="h-[220px] overflow-hidden">
             <img 
               src={project.image}
@@ -73,10 +77,12 @@ const projects = [
             </div>
           </div>
 
+          <!-- Project Info -->
           <div class="p-6 relative z-20 -mt-12">
             <h3 class="text-2xl font-bold mb-2 group-hover:text-primary-cyan transition-colors line-clamp-1">{project.title}</h3>
             <p class="text-gray-400 text-sm mb-6 line-clamp-2">{project.description}</p>
             
+            <!-- Project Tags -->
             <div class="flex items-center justify-between mt-auto">
               <div class="flex gap-2">
                 {project.tags.slice(0, 3).map((tag) => (

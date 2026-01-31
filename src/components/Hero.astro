@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import logo from '../assets/logo.svg';
 import avatar from '../assets/avatar.jpg';
 ---
-
+<!-- Hero Section -->
 <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent">
   <div class="container mx-auto px-4 z-10">
     <div class="flex flex-col items-center mb-12">
@@ -48,12 +48,14 @@ import avatar from '../assets/avatar.jpg';
         </div>
       </div>
     </div>
-
+    
+    <!-- Slogan Container -->
     <div id="slogan-container" class="h-10 mb-6 flex items-center justify-center reveal">
       <p id="slogan-text" class="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text tracking-tight h-full flex items-center"></p>
       <span id="cursor" class="w-[3px] h-8 bg-primary-cyan ml-1 animate-pulse"></span>
     </div>
 
+    <!-- Slogan title -->
     <h1 class="text-6xl md:text-8xl font-bold mb-8 text-center reveal">
       Oswaldo
       <span class="bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text">
@@ -61,10 +63,12 @@ import avatar from '../assets/avatar.jpg';
       </span>
     </h1>
     
+    <!-- Description -->
     <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto text-center reveal leading-relaxed">
       Programador & Mentor Técnico. Especialista en C#, Python y formación de nuevos talentos tecnológicos.
     </p>
     
+    <!-- Buttons -->
     <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 reveal">
       <a 
         href="#projects" 
@@ -98,6 +102,7 @@ import avatar from '../assets/avatar.jpg';
     </div>
   </div>
 
+  <!-- Arrow -->
   <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-primary-cyan">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -105,6 +110,7 @@ import avatar from '../assets/avatar.jpg';
   </div>
 </section>
 
+<!-- local styles -->
 <style>
   @keyframes spin-slow {
     from { transform: rotate(0deg); }
@@ -129,6 +135,7 @@ import avatar from '../assets/avatar.jpg';
   }
 </style>
 
+<!-- scripts gsap -->
 <script>
   import { gsap } from 'gsap';
 

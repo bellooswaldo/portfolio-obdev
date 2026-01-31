@@ -2,7 +2,7 @@
 title: "Código y Creatividad: Mentoría técnica con Git y Python"
 description: "Cómo la gestión de versiones y el pensamiento lógico transforman el aprendizaje en proyectos de Sistemas Expertos."
 pubDate: "2026-01-31"
-heroImage: "/portfolio-obdev/assets/seith.png"
+heroImage: "../../assets/seith.png"
 tags: ["Mentoría", "Python", "Git", "MVP"]
 ---
 
@@ -19,4 +19,4 @@ Durante el desarrollo de **SEITH**, un sistema experto basado en Python, mis alu
 2. **Control de Versiones**: Git como bitácora de decisiones técnicas.
 3. **Sistemas de Inferencia**: Cómo traducir el conocimiento humano a reglas de Python.
 
-Este enfoque práctico es lo que busco proyectar en mi camino hacia el **Microsoft MVP**, demostrando que la tecnología es el puente entre la teoría académica y la solución de problemas reales.
+Este enfoque práctico es lo que busco proyectar en mi camino de la **enseñanza**, demostrando que la tecnología es el puente entre la teoría académica y la solución de problemas reales.

@@ -1,12 +1,13 @@
 ---
 import LinkedInBadge from './LinkedInBadge.astro';
 ---
-
+<!-- Contact -->
 <section id="contact" class="py-20 bg-transparent relative">
   <div class="container mx-auto px-4">
     <h2 class="text-4xl font-bold mb-16 reveal">Contacto</h2>
-    
+    <!-- Contact Content -->
     <div class="grid md:grid-cols-2 gap-12">
+      <!-- Contact Info -->
       <div class="reveal">
         <h3 class="text-2xl font-bold mb-4 bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text">
           ¿Tienes un proyecto en mente?
@@ -16,6 +17,7 @@ import LinkedInBadge from './LinkedInBadge.astro';
           No dudes en contactarme para discutir tus ideas.
         </p>
         <div class="flex flex-col gap-4">
+          <!-- Email -->
           <div id="email-container">
             <a href="#" id="email-link" title="Enviar un correo electrónico" class="flex items-center gap-4 text-gray-400 hover:text-primary-cyan transition-colors group">
               <div class="p-3 bg-white/5 rounded-lg group-hover:bg-primary-cyan/10 transition-colors">
@@ -26,7 +28,7 @@ import LinkedInBadge from './LinkedInBadge.astro';
               <span id="email-text">Enviar un Email</span>
             </a>
           </div>
-
+          <!-- Phone -->
           <div id="phone-container">
             <a href="#" id="phone-link" title="Contactar por WhatsApp o Llamada" class="flex items-center gap-4 text-gray-400 hover:text-primary-blue transition-colors group">
               <div class="p-3 bg-white/5 rounded-lg group-hover:bg-primary-blue/10 transition-colors">
@@ -40,7 +42,7 @@ import LinkedInBadge from './LinkedInBadge.astro';
           <LinkedInBadge />
         </div>
       </div>
-      
+      <!-- Contact Form -->
       <form id="contact-form" class="reveal p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
         <div class="mb-6">
           <label for="user_name" class="block text-sm font-medium text-gray-400 mb-2">Nombre</label>
@@ -84,7 +86,7 @@ import LinkedInBadge from './LinkedInBadge.astro';
     </div>
   </div>
 </section>
-
+<!-- Scripts ofuscación -->
 <script>
   import emailjs from '@emailjs/browser';
 
