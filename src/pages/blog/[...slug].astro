@@ -1,0 +1,53 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post: CollectionEntry<'blog'>) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} - Oswaldo Bello`}>
+	<article class="py-20 max-w-4xl mx-auto px-4">
+		{post.data.heroImage && (
+			<img src={post.data.heroImage} alt="" class="w-full h-[400px] object-cover rounded-3xl mb-12 shadow-2xl" />
+		)}
+		<div class="flex gap-2 mb-6">
+			{post.data.tags?.map((tag: string) => (
+				<span class="text-[10px] font-bold uppercase tracking-widest text-primary-cyan px-2 py-1 bg-primary-cyan/10 rounded-full">
+					{tag}
+				</span>
+			))}
+		</div>
+		<h1 class="text-5xl font-bold mb-8 bg-gradient-to-r from-primary-cyan to-primary-blue text-transparent bg-clip-text">
+			{post.data.title}
+		</h1>
+		<div class="prose prose-invert prose-cyan max-w-none">
+			<Content />
+		</div>
+		
+		<div class="mt-20 pt-10 border-t border-white/10">
+			<a href="/blog" class="text-primary-cyan font-bold hover:underline">
+				← Volver al blog
+			</a>
+		</div>
+	</article>
+</Layout>
+
+<style is:global>
+	.prose h1 { @apply text-4xl font-bold mb-6 mt-12; }
+	.prose h2 { @apply text-3xl font-bold mb-4 mt-10 text-primary-cyan; }
+	.prose p { @apply text-gray-400 text-lg leading-relaxed mb-6; }
+	.prose ul { @apply list-disc list-inside mb-6 text-gray-400; }
+	.prose li { @apply mb-2; }
+	.prose strong { @apply text-white font-bold; }
+</style>
